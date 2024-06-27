@@ -1,18 +1,27 @@
-import Footer from "./components/Footer";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RootLayout from "./layouts/RootLayout";
 import HomeContent from "./components/HomeContent";
-import Navbar from "./components/Navbar";
+import Products from "./components/Products";
 import "./App.css";
 
 const App = () => {
-  return (
-    <div className="max-w-[1440px] h-screen mx-auto flex flex-col">
-      <Navbar />
-      <div className="my-2">
-        <HomeContent />
-      </div>
-      <Footer />
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomeContent />,
+        },
+        {
+          path: "/products",
+          element: <Products />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 };
 
 export default App;
