@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between p-3 sticky top-0 bg-white border-b-[3px] z-10">
-      <h1 className="font-bold text-2xl">Shopy</h1>
+    <div className="flex items-center justify-between py-3 px-7 sticky top-0 bg-white border-b-[3px] z-10">
+      <Link to="/" className="font-bold text-2xl">
+        Shopy
+      </Link>
       <input
         type="text"
         placeholder="Search"

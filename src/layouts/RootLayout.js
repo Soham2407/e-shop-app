@@ -5,9 +5,9 @@ import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
   return (
-    <div className="max-w-[1440px] h-screen mx-auto flex flex-col">
+    <div className="container mx-auto h-screen flex flex-col">
       <Navbar />
-      <div className="py-3">
+      <div className="py-3 px-7">
         <Outlet />
       </div>
       <Footer />

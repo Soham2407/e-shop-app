@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="w-60 border border-slate-600 cursor-pointer shadow-md transition duration-200 ease-in overflow-hidden rounded-md hover:scale-105">
+    <div className="w-52 border border-slate-600 cursor-pointer shadow-md transition duration-200 ease-in overflow-hidden rounded-md hover:scale-105">
       <div className="w-full h-44">
         <img
           src={product?.thumbnail}

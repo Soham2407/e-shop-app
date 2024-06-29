@@ -32,10 +32,14 @@ const HomeProducts = ({ selectedCategory }) => {
   }, [selectedCategory]);
 
   return (
-    <div className=" max-w-[1360px] mx-auto">
+    <div>
       {!loading && (
-        <div className="flex justify-end mr-8 mb-2">
-          <Link to="/products" className="text-lg hover:underline">
+        <div className="flex justify-end mb-2">
+          <Link
+            to="/products"
+            state={{ selectedCategory }}
+            className="text-lg hover:underline"
+          >
             View All
           </Link>
         </div>
@@ -44,7 +48,7 @@ const HomeProducts = ({ selectedCategory }) => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex gap-8 flex-wrap">
+        <div className="flex gap-6 flex-wrap">
           {products.map((product) => (
             <ProductCard product={product} key={product?.id} />
           ))}
