@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import ShimmerCard from "./shimmer/ShimmerCard";
 import { Link } from "react-router-dom";
 
 const HomeProducts = ({ selectedCategory }) => {
@@ -46,7 +47,16 @@ const HomeProducts = ({ selectedCategory }) => {
       )}
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="flex gap-6 flex-wrap">
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+        </div>
       ) : (
         <div className="flex gap-6 flex-wrap">
           {products.map((product) => (

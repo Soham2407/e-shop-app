@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
 import { useLocation } from "react-router-dom";
+import ShimmerCard from "./shimmer/ShimmerCard";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -44,8 +45,15 @@ const Products = () => {
   return (
     <div className="mt-2">
       {loading ? (
-        <div className="min-h-[35rem] flex justify-center items-center">
-          <p>Loading...</p>
+        <div className="flex gap-6 flex-wrap min-h-80">
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
+          <ShimmerCard />
         </div>
       ) : (
         <div className="flex gap-6 flex-wrap min-h-80">

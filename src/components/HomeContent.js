@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomeProducts from "./HomeProducts";
+import ShimmerCategories from "./shimmer/ShimmerCategories";
 
 const HomeContent = () => {
   const [categories, setCategories] = useState([]);
@@ -27,7 +28,7 @@ const HomeContent = () => {
     <>
       <div className="flex overflow-x-auto gap-6 scrollbar py-4 cursor-pointer">
         {loading ? (
-          <p>Loading...</p>
+          <ShimmerCategories />
         ) : (
           <>
             <div
