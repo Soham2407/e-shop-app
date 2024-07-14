@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import HomeProducts from "./HomeProducts";
 import ShimmerCategories from "./shimmer/ShimmerCategories";
+import { getCategories } from "../utils/api";
 
 const HomeContent = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedcategory] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const getCategories = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get("https://dummyjson.com/products/categories");
-      setCategories(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+  const fetchCategories = async () => {
+    setLoading(true);
+    const categories = await getCategories();
+    setCategories(categories);
+    setLoading(false);
   };
 
   useEffect(() => {
-    getCategories();
+    fetchCategories();
   }, []);
 
   return (
@@ -32,7 +27,7 @@ const HomeContent = () => {
         ) : (
           <>
             <div
-              className="w-fit px-3 py-2 rounded-md hover:bg-orange-500 text-white bg-slate-600 flex justify-center items-center shrink-0"
+              className="w-fit px-3 py-2 rounded-md hover:bg-purple-600 hover:text-white border-purple-500 border flex justify-center items-center shrink-0"
               onClick={() => setSelectedcategory("")}
             >
               <p className="text-center text-sm font-semibold">All</p>
@@ -40,7 +35,7 @@ const HomeContent = () => {
             {categories?.map((category, index) => (
               <div
                 key={index}
-                className="w-fit px-3 py-2 rounded-md hover:bg-orange-500 text-white  bg-slate-600  flex justify-center items-center shrink-0"
+                className="w-fit px-3 py-2 rounded-md hover:bg-purple-600 hover:text-white border-purple-500 border flex justify-center items-center shrink-0"
                 onClick={() => setSelectedcategory(category.slug)}
               >
                 <p className="text-center text-sm font-semibold">

@@ -70,14 +70,14 @@ const Products = () => {
           pageRangeDisplayed={2}
           marginPagesDisplayed={2}
           containerClassName="flex justify-end items-center gap-2"
-          pageClassName="border flex justify-center items-center text-blue-500 pointer-cursor"
+          pageClassName="border flex justify-center items-center text-purple-600 pointer-cursor"
           pageLinkClassName="block px-3 py-1"
-          previousClassName="px-2 py-1 bg-blue-500 text-white"
-          nextClassName="px-2 py-1 bg-blue-500 text-white"
-          breakClassName="border flex justify-center items-center text-blue-500 pointer-cursor"
+          previousClassName="px-2 py-1 bg-purple-600 text-white"
+          nextClassName="px-2 py-1 bg-purple-600 text-white"
+          breakClassName="border flex justify-center items-center text-purple-600 pointer-cursor"
           breakLinkClassName="block px-3 py-1"
-          activeClassName="bg-blue-500 text-white"
-          activeLinkClassName="bg-blue-500 text-white"
+          activeClassName="bg-purple-600 text-white"
+          activeLinkClassName="bg-purple-600 text-white"
           onPageChange={handlePageClick}
         />
       </div>

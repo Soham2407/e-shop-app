@@ -2,14 +2,17 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import HomeContent from "./components/HomeContent";
 import Products from "./components/Products";
-import "./App.css";
 import About from "./components/About";
+import ProductDetails from "./components/ProductDetails";
+import "./App.css";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
+      errorElement: <PageNotFound />,
       children: [
         {
           index: true,
@@ -22,6 +25,10 @@ const App = () => {
         {
           path: "/products",
           element: <Products />,
+        },
+        {
+          path: "/products/:id",
+          element: <ProductDetails />,
         },
       ],
     },

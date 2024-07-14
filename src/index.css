@@ -7,5 +7,37 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: orange;
+  background-color: rgb(142, 79, 204);
+}
+
+.view-btn {
+  border: 1px solid rgb(142, 79, 204);
+  color: rgb(142, 79, 204);
+  padding: 0.4rem 1.3rem;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-btn:hover {
+  color: #fff;
+}
+
+.view-btn::before {
+  content: "";
+  position: absolute;
+  background-color: rgb(142, 79, 204);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all linear 0.4s;
+}
+
+.view-btn:hover::before {
+  transform: translate(-50%, -50%) scale(3);
 }

@@ -17,6 +17,7 @@ const Navbar = () => {
           About
         </Link>
         <p className="font-semibold">Cart</p>
+        <p className="font-semibold">Logout</p>
       </div>
     </div>
   );

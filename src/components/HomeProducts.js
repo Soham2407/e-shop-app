@@ -1,33 +1,22 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ShimmerCard from "./shimmer/ShimmerCard";
 import { Link } from "react-router-dom";
+import { getProducts } from "../utils/api";
 
 const HomeProducts = ({ selectedCategory }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getProducts = async () => {
-    try {
-      setLoading(true);
-      let url;
-      if (selectedCategory) {
-        url = `https://dummyjson.com/products/category/${selectedCategory}?limit=10`;
-      } else {
-        url = "https://dummyjson.com/products?limit=10";
-      }
-      const res = await axios.get(url);
-      setProducts(res?.data?.products);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+  const fetchProducts = async () => {
+    setLoading(true);
+    const products = await getProducts(selectedCategory);
+    setProducts(products);
+    setLoading(false);
   };
 
   useEffect(() => {
-    getProducts();
+    fetchProducts();
 
     return () => setProducts([]);
   }, [selectedCategory]);
@@ -35,11 +24,11 @@ const HomeProducts = ({ selectedCategory }) => {
   return (
     <div>
       {!loading && (
-        <div className="flex justify-end mb-2">
+        <div className="flex justify-end ">
           <Link
             to="/products"
             state={{ selectedCategory }}
-            className="text-lg hover:underline"
+            className="view-btn"
           >
             View All
           </Link>
@@ -47,7 +36,7 @@ const HomeProducts = ({ selectedCategory }) => {
       )}
 
       {loading ? (
-        <div className="flex gap-6 flex-wrap">
+        <div className="flex gap-6 flex-wrap mt-4">
           <ShimmerCard />
           <ShimmerCard />
           <ShimmerCard />
@@ -58,7 +47,7 @@ const HomeProducts = ({ selectedCategory }) => {
           <ShimmerCard />
         </div>
       ) : (
-        <div className="flex gap-6 flex-wrap">
+        <div className="flex gap-6 flex-wrap mt-4">
           {products.map((product) => (
             <ProductCard product={product} key={product?.id} />
           ))}
